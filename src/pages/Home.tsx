@@ -4,7 +4,6 @@ import HeroSection from '@/sections/HeroSection';
 import AStoryWorthKeeping from '@/sections/AStoryWorthKeeping';
 import LifeJourney from '@/sections/LifeJourney';
 import ItFeelsLikeThis from '@/sections/ItFeelsLikeThis';
-import ThreeWays from '@/sections/ThreeWays';
 import YourStoryIsYours from '@/sections/YourStoryIsYours';
 import LoveContinues from '@/sections/LoveContinues';
 import ProductsSection from '@/sections/ProductsSection';
@@ -56,7 +55,6 @@ export default function Home() {
         <AStoryWorthKeeping />
         <LifeJourney />
         <ItFeelsLikeThis />
-        <ThreeWays />
         <YourStoryIsYours />
         <LoveContinues />
         <ProductsSection />

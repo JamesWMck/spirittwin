@@ -51,7 +51,12 @@ export default function Navbar() {
       >
         <nav className="mx-auto flex items-center justify-between px-[5vw] py-4 max-w-[1400px]">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
+            <img
+              src="/spirittwin_logo_zen.png"
+              alt="SpiritTwin"
+              className="h-8 w-auto"
+            />
             <span
               className="font-display text-[20px] font-light tracking-tight"
               style={{ color: 'var(--bone)' }}

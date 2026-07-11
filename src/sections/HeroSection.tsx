@@ -2,18 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useLanguage, translations } from '@/hooks/useLanguage';
 
-const questions = [
-  'What if you can choose?',
-  'When is the end?',
-  'What if wisdom never has to die?',
-  'What if their character could live on?',
-  'What if they could meet their unborn grandchildren?',
-  'What if both consciousness and subconscious could be preserved?',
-  'What if they could still guide and challenge you?',
+const questionKeys: (keyof typeof translations.hero.questions)[] = [
+  'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7',
 ];
 
 export default function HeroSection() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -21,7 +15,7 @@ export default function HeroSection() {
   // Question carousel
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentQuestion((prev) => (prev + 1) % questions.length);
+      setCurrentQuestion((prev) => (prev + 1) % questionKeys.length);
     }, 4000);
     return () => clearInterval(interval);
   }, []);
@@ -95,7 +89,13 @@ export default function HeroSection() {
         <img
           src="/hero-bg.png"
           alt=""
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover md:block hidden"
+          style={{ opacity: 0.5 }}
+        />
+        <img
+          src="/hero-bg-mobile.png"
+          alt=""
+          className="w-full h-full object-cover md:hidden"
           style={{ opacity: 0.5 }}
         />
       </div>
@@ -115,13 +115,13 @@ export default function HeroSection() {
           <p
             className="font-display italic transition-all duration-1000 text-center leading-tight"
             style={{
-              fontSize: 'clamp(18px, 3.2vw, 28px)',
+              fontSize: 'clamp(18px, 3.2vw, 22px)',
               color: 'var(--amber-core)',
               opacity: 0.9,
             }}
             key={currentQuestion}
           >
-            {questions[currentQuestion]}
+            {t(translations.hero.questions[questionKeys[currentQuestion]])}
           </p>
         </div>
 
@@ -132,7 +132,7 @@ export default function HeroSection() {
             color: 'var(--bone)',
           }}
         >
-          What if the end is optional?
+          {lang === 'en' ? "What if the end is optional?" : t(translations.hero.questions.q7)}
         </h1>
 
         <div className="hero-cta mt-10">
